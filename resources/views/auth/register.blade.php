@@ -18,18 +18,10 @@
 {{ Form::label('パスワード確認') }}
 {{ Form::text('password-confirm',null,['class' => 'input']) }}
 
-public function store((Request $request)
-{
-    $validated = $request->validate([
-        'username' => 'required|unique:posts|max:12',
-        'mail' => 'required|max:40',
-        'password' => 'required|max:20',
-        'password-confirm' => 'required|max:20',
-    ]);
-}
 
 
-{{ Form::submit('登録') }}
+
+{{ Form::submit('REGISTER') }}
 
 <p><a href="/login">ログイン画面へ戻る</a></p>
 

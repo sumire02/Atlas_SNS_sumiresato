@@ -1,22 +1,134 @@
 @charset "utf-8";
-html{
-}
-body{
-}
+
+html {}
+
+body {}
+
 /* header */
-header{
-    background:#186AC9;
+header {
+    background: #186AC9;
 }
 
 /* main content */
-#row{
+#row {
     display: flex;
     flex-flow: row wrap;
 }
-#container{
+
+#container {
     flex: 0 0 80%;
 }
-#side-bar{
+
+#side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+ul {
+    background-color: #ffffff;
+    line-height: 32px;
+    margin: 0;
+    padding-left: 32px;
+}
+
+.arrow {
+    float: right;
+    padding-right: 2px;
+    padding-top: 2px;
+}
+
+.expanded ul {
+    display: block;
+}
+
+.collapsed ul {
+    display: none;
+}
+
+.arrow-tab {
+    background-color: #186AC9;
+    width: 200px;
+}
+
+p {
+    margin: 16px 0 0 0;
+    padding-left: 8px;
+}
+
+
+.accordion {
+    position: relative;
+    width: 20%;
+    border: 1px solid #0079c1;
+    border-top: none;
+    outline: 0;
+    cursor: pointer
+}
+
+.head {
+    background: #186AC9;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+}
+
+.button {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: block;
+    position: relative;
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    right: 25px;
+    top: 38%;
+    transition: all 0.2s ease-in-out;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-top: solid 2px #fff;
+    border-right: solid 2px #fff;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+
+.button.open::after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 45%;
+}
+
+.content {
+    display: none;
+    padding-left: 2.3125em;
+}
+
+.list+.list {
+    border-top: 1px solid #666;
+}
+
+.list {
+    background: #fff;
+    padding: 8px 16px;
+}
+
+/*  ---------------------
+   以下は調整用
+ --------------------- */
+
+
+ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background-color: transparent;
 }

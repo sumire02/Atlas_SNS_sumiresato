@@ -18,8 +18,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
+
+});
+
+
 
 //ログアウト中のページ
+
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
@@ -29,7 +37,10 @@ Route::post('/register', 'Auth\RegisterController@register');
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
+
 //ログイン中のページ
+Route::group(['middleware' => 'auth'], function(){
+
 Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
@@ -39,8 +50,9 @@ Route::get('/search','UsersController@index');
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::get('/logout', 'Auth\LoginController@logout');
 
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
+Route::get('posts/create-form', 'PostsController@createForm')->name('posts.create');
+Route::post('posts/create', 'PostsController@create');
 
 });
