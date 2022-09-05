@@ -100,9 +100,9 @@ class RegisterController extends Controller
                 'password_confirmation.required'  => '確認用のパスワードを入力をして下さい。',
             ]);
             $data = $request->input();
-
+            $name = $request->username;
             $this->create($data);
-            return redirect('added');
+            return view('auth.added',compact('name'));
         }
         return view('auth.register');
     }

@@ -53,6 +53,6 @@ Route::get('/follower-list','PostsController@index');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('posts/create-form', 'PostsController@createForm')->name('posts.create');
-Route::post('posts/create', 'PostsController@create');
+Route::post('posts/create', 'PostsController@store');
 
 });

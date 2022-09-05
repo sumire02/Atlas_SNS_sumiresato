@@ -31,4 +31,11 @@ class User extends Authenticatable
     {
         return $this->Where('id', '<>', $user_id)->paginate(5);
     }
+
+    // postsテーブルとのリレーション（主テーブル側）
+    public function posts() { //1対多の「多」側なので複数形
+        return $this->hasMany('App\Post');
+    }
+
+
 }

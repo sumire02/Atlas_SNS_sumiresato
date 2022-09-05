@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
     //
-    public function index(){
-        return view('posts.index');
+    public function index()
     {
-        $list = \DB::table('posts')->get();
-        return view('posts.index',['list'=>$list]);
-    }
-
+        $posts = Post::all();
+        return view('posts.index',compact('posts'));
     }
 
     public function create()
@@ -21,9 +21,15 @@ class PostsController extends Controller
         //
     }
 
+    // 作成した投稿を保存
     public function store(Request $request)
     {
         //
+        $post = new Post;
+        $post->post = $request->post;
+        $post->user_id = Auth::id();
+        $post->save();
+        return redirect('top');
     }
 
     public function show($id)
