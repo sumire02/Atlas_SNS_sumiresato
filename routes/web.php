@@ -55,4 +55,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('posts/create-form', 'PostsController@createForm')->name('posts.create');
 Route::post('posts/create', 'PostsController@store');
 
+Route::get('post/{id}/delete', 'PostsController@delete')->name('posts.index');
+
+
 });
