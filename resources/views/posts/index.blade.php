@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-      <img src="images/icon1.png">
+      <input type ="image" name="submit" width="50" height="50" src="images/icon1.png">
         {!! Form::open(['url' => 'posts/create']) !!}
         {{Form::token()}}
         <div class="form-group">

@@ -45,7 +45,16 @@ Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+
+Route::get('/search-form','UsersController@searchForm');
+Route::post('/search','UsersController@search');
+
+//プロフィール編集画面表示
+Route::get('/profile', 'UsersController@show')->name('profile');
+//プロフィール編集
+Route::put('/profile', 'UsersController@profileUpdate')->name('profile_edit');
+//パスワード編集
+Route::put('/password_change', 'UsersController@passwordUpdate')->name('password_edit');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');

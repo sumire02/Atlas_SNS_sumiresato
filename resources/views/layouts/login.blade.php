@@ -25,14 +25,16 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+        <h1><a href="/top">
+            <input type ="image" name="submit" width="100" height="40" src="images/atlas.png"></a></h1>
             <div id="">
                 <div id="">
 
                     <div class="accordion">
                         <div class="head">
                             <h5 class="accordion-title js-accordion-title">
-                        <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"><i class='fa fa-chevron-circle-down arrow'></i></p>
+                        <p>{{ Auth::user()->username }}さん<input type ="image"name="submit" width="50" height="50" src="images/icon1.png">
+<i class='fa fa-chevron-circle-down arrow'></i></p>
                     </h5>
                         <button type="button" class="button"></button>
                     </div>
@@ -55,7 +57,7 @@
                 <p>{{ Auth::user()->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>名</p>
                 </div>
                 <a class="btn btn-primary" href="/follow-list">フォローリスト</a>
                 <div>
@@ -64,7 +66,7 @@
                 </div>
                 <a class="btn btn-primary" href="/follower-list">フォロワーリスト</a>
             </div>
-            <a class="btn btn-primary" href="">ユーザー検索</a>
+            <a class="btn btn-primary" href="/search-form">ユーザー検索</a>
         </div>
     </div>
     <footer>
