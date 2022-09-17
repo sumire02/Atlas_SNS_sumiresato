@@ -56,9 +56,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255'],
-            'mail' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'username' => ['required', 'string', 'min:2', 'max:12'],
+            'mail' => ['required', 'string', 'email', 'min:5', 'max:40', 'unique:users,mail'],
+            'password' => ['required', 'string', 'min:8', 'max:20', 'confirmed'],
+            'password_confirmation' => ['required', 'string', 'min:8', 'max:20', ],
         ]);
     }
 
@@ -84,23 +85,18 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         if($request->isMethod('post')){
-            $data = $request->input(
-                [
-                    'username' => 'required|string|min:2|max:12',
-                    'mail' => 'required|string|email|min:5|max:40|unique:users',
-                    'password' => 'required|min:8|max:20|confirmed',
-                    'password_confirmation' => 'required',
-                ],
-                [
-                'username.required' => '名前を入力してください。',
-                'username.max' => '名前は20字以内で入力してください。',
-                'mail.required' => 'Eメールを入力してください。',
-                'mail.email' => 'Eメールはメールアドレス形式で入力してください。',
-                'password.required' => 'パスワードを入力してください。',
-                'password_confirmation.required'  => '確認用のパスワードを入力をして下さい。',
-            ]);
             $data = $request->input();
             $name = $request->username;
+
+            // バリデーション　エラーになった時
+            $validator = $this->validator($data);
+
+            if ($validator->fails()) {
+                return redirect('/register')
+                ->withErrors($validator)
+                ->withInput();
+            }
+
             $this->create($data);
             return view('auth.added',compact('name'));
         }

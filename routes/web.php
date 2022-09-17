@@ -42,6 +42,8 @@ Route::post('/added', 'Auth\RegisterController@added');
 Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/top','PostsController@index');
+// Route::get('/top','PostsController@update');
+Route::post('posts/{id}/update', 'PostsController@update');
 
 Route::get('/profile','UsersController@profile');
 
@@ -52,9 +54,7 @@ Route::post('/search','UsersController@search');
 //プロフィール編集画面表示
 Route::get('/profile', 'UsersController@show')->name('profile');
 //プロフィール編集
-Route::put('/profile', 'UsersController@profileUpdate')->name('profile_edit');
-//パスワード編集
-Route::put('/password_change', 'UsersController@passwordUpdate')->name('password_edit');
+Route::post('/profile', 'UsersController@profileUpdate')->name('profile_edit');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');

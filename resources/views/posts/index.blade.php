@@ -18,9 +18,25 @@
       <p>{{$post->user->username}}</p>
       <p>{{$post->post}}</p>
       <p>{{$post->created_at}}</p>
+      <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><input type ="image" name="submit" width="50" height="50" src="images/edit.png"></a>
       <a href="/post/{{$post->id}}/delete"><input type ="image" name="submit" width="60" height="60" src="images/trash-h.png"></a>
       @endforeach
     </div>
+
+   <!-- モーダルの中身 -->
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+           <form action="posts/{id}/update" method="post">
+                <textarea name="posts" class="modal_post"></textarea>
+                <input type="hidden" name="id" class="modal_id" value="id">
+                <input type="submit" value="更新">
+                {{ csrf_field() }}
+           </form>
+           <a class="js-modal-close" href="/top">閉じる</a>
+        </div>
+    </div>
+
 
 
 

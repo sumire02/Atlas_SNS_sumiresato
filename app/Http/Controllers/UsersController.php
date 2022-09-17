@@ -56,35 +56,12 @@ class UsersController extends Controller
     public function profileUpdate(Request $request, User $users)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(Auth::id())],
+            'name' => ['required', 'string', 'min:2', 'max:12'],
+            'email' => ['required', 'string', 'email', 'min:5', 'max:40', 'unique:users,mail'],
+            'password' =>['required', 'string', 'min:8', 'max:20', 'confirmed'],
+            'password_comfirm' =>['required', 'string', 'min:8', 'max:20'],
+            'bio' =>['nullable', 'string', 'max:150'],
+            'icon_imagi' =>['nullable', 'alpha_num', 'mimes:jpeg,png,jpg,zip,pdf'],
         ]);
-
-        try {
-            $users = Auth::user();
-            $users->name = $request->input('name');
-            $users->email = $request->input('email');
-            $users->save();
-
-        } catch (\Exception $e) {
-            return back()->with('msg_error', 'プロフィールの更新に失敗')->withInput();
-        }
-        return redirect()->route('articles_index')->with('msg_success', 'プロフィールの更新が完了');
-    }
-    public function passwordUpdate(Request $request)
-    {
-        $request->validate([
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-
-        try {
-            $users = Auth::user();
-            $users->password = bcrypt($request->input('password'));
-            $users->save();
-
-        } catch (\Exception $e) {
-            return back()->with('msg_error', 'パスワードの更新に失敗')->withInput();
-        }
-        return redirect()->route('articles_index')->with('msg_success', 'パスワードの更新が完了');
     }
 }
