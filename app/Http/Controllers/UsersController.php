@@ -64,4 +64,42 @@ class UsersController extends Controller
             'icon_imagi' =>['nullable', 'alpha_num', 'mimes:jpeg,png,jpg,zip,pdf'],
         ]);
     }
+        // フォロー
+    public function follow(User $user)
+    {
+        $follower = auth()->user();
+        // フォローしているか
+        $is_following = $follower->isFollowing($user->id);
+        if(!$is_following) {
+            // フォローしていなければフォローする
+            $follower->follow($user->id);
+            return back();
+        }
+
+        // FollowUser::firstOrCreate([
+        //     'followed_id' => $requset->post_user,
+        //     'following_id' => $requset->auth_user
+        // ]);
+        // return true;
+    }
+
+    // フォロー解除
+    public function unfollow(User $user)
+    {
+        $follower = auth()->user();
+        // フォローしているか
+        $is_following = $follower->isFollowing($user->id);
+        if($is_following) {
+            // フォローしていればフォローを解除する
+            $follower->unfollow($user->id);
+            return back();
+        }
+        // $follow = FollowUser::where('followed_id', $requset->post_user)
+        // ->where('following_id', $requset->auth_user)
+        // ->first();
+        // if($follow){
+        //     $follow->delete();
+        //     return true;
+        // }
+    }
 }

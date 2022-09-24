@@ -47,6 +47,12 @@ Route::post('posts/{id}/update', 'PostsController@update');
 
 Route::get('/profile','UsersController@profile');
 
+Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
+
+// フォロー/フォロー解除を追加
+// Route::post('users/{user}/follow','UsersController@follow')->name('follow');
+// Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
+
 
 Route::get('/search-form','UsersController@searchForm');
 Route::post('/search','UsersController@search');

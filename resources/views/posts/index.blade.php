@@ -15,13 +15,20 @@
     <div>
       <!-- 左が複数形(テーブル名)　右が単数(好きな文字で良い) -->
       @foreach ($posts as $post)
+       <div class="card">
+         <div class="card-haeder p-3 w-100 d-flex">
+           <div class="ml-2 d-flex ">
       <p>{{$post->user->username}}</p>
       <p>{{$post->post}}</p>
       <p>{{$post->created_at}}</p>
       <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><input type ="image" name="submit" width="50" height="50" src="images/edit.png"></a>
       <a href="/post/{{$post->id}}/delete"><input type ="image" name="submit" width="60" height="60" src="images/trash-h.png"></a>
-      @endforeach
     </div>
+  </div>
+</div>
+@endforeach
+    </div>
+
 
    <!-- モーダルの中身 -->
     <div class="modal js-modal">
@@ -30,7 +37,7 @@
            <form action="posts/{id}/update" method="post">
                 <textarea name="posts" class="modal_post"></textarea>
                 <input type="hidden" name="id" class="modal_id" value="id">
-                <input type="submit" value="更新">
+                <input type ="image" name="submit" width="60" height="60" src="images/edit.png">
                 {{ csrf_field() }}
            </form>
            <a class="js-modal-close" href="/top">閉じる</a>
