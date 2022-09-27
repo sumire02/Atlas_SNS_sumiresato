@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\User;
 use App\index;
-use App\Follower;
+use App\Follow;
 use Auth;
 
 
@@ -27,21 +27,24 @@ class UsersController extends Controller
         return view('users.profile');
     }
 
-    public function searchForm(){
-        $users = User::get();
-            return view('users.search',[
-            'users' => $users
-            ]);
+    // public function searchForm(){
+    //     $users = User::get();
+    //         return view('users.search',[
+    //         'users' => $users
+    //         ]);
 
-    }
+    // }
     public function search(Request $requset){
-        $users = $requset->input('search');
-        $requset=session()->put('search',$users);
+        $keyword = $requset->input('search');
+        $requset=session()->put('search',$keyword);
         $query = User::query();
 
-        if(!empty($users)) {
-            $users = $query->where('username','like', '%'.$users. '%')->get();
+        if(!empty($keyword)) {
+            $users = $query->where('username','like', '%'.$keyword. '%')->get();
              }
+        else{
+            $users = User::get();
+        }
 
             return view('users.search',[
             'users' => $users
@@ -65,41 +68,23 @@ class UsersController extends Controller
         ]);
     }
         // フォロー
-    public function follow(User $user)
+    public function follow(Request $request, $id)
     {
-        $follower = auth()->user();
-        // フォローしているか
-        $is_following = $follower->isFollowing($user->id);
-        if(!$is_following) {
-            // フォローしていなければフォローする
-            $follower->follow($user->id);
-            return back();
-        }
-
-        // FollowUser::firstOrCreate([
-        //     'followed_id' => $requset->post_user,
-        //     'following_id' => $requset->auth_user
-        // ]);
-        // return true;
+        $follows = new Follow;
+        $follows->followed_id = $request->id;
+        $follows->following_id = Auth::id();
+        $follows->save();
+        return redirect('search');
     }
 
     // フォロー解除
-    public function unfollow(User $user)
+    public function unfollow($id)
     {
-        $follower = auth()->user();
-        // フォローしているか
-        $is_following = $follower->isFollowing($user->id);
-        if($is_following) {
-            // フォローしていればフォローを解除する
-            $follower->unfollow($user->id);
-            return back();
-        }
-        // $follow = FollowUser::where('followed_id', $requset->post_user)
-        // ->where('following_id', $requset->auth_user)
-        // ->first();
-        // if($follow){
-        //     $follow->delete();
-        //     return true;
-        // }
+        $following_id = Auth::user()->id;
+        Follow::where('followed_id', $id)
+        ->where('following_id', $following_id)
+        ->delete();
+        return redirect('search');
     }
+
 }
