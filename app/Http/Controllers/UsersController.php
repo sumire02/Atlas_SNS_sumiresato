@@ -92,7 +92,7 @@ class UsersController extends Controller
         $follows->followed_id = $request->id;
         $follows->following_id = Auth::id();
         $follows->save();
-        return redirect('search');
+        return back();
     }
 
     // フォロー解除
@@ -102,11 +102,11 @@ class UsersController extends Controller
         Follow::where('followed_id', $id)
         ->where('following_id', $following_id)
         ->delete();
-        return redirect('search');
+        return back();
     }
 
 
-        public function users_profile($id){
+    public function users_profile($id){
         $user = User::find($id);
         $post = Post::where('user_id',$id)->get();
         return view('users.otheruser', ['user' => $user,'post' => $post]);

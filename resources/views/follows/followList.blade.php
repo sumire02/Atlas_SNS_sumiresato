@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="card">
-    <div class="card-haeder p-3 w-100 d-flex">
+    <div class="card-haeder p-5 w-100 d-flex">
       <h3>Follow List</h3>
       <a href="/users_profile">
       <img src="{{ asset('images/icon.png/') }}" class="rounded-circle" width="50" height="50"></a>
