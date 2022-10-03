@@ -5,6 +5,8 @@
   {!! Form::open(['url' => '/search']) !!}
   {{Form::token()}}
 <div class="form-group">
+  <div class="card-haeder p-3 w-100 d-flex">
+
 {!! Form::input('text', 'search', null, ['class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
 <input type="submit" value="" class="btn btn-primary" >
 </div>
@@ -40,6 +42,7 @@
       @endforeach
 
     </div>
+</div>
 
 
 @endsection

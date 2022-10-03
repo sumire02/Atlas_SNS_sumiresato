@@ -15,17 +15,22 @@
     <div>
       <!-- 左が複数形(テーブル名)　右が単数(好きな文字で良い) -->
       @foreach ($posts as $post)
-       <div class="card">
+      @if (Auth::id() === $post->user_id || auth()->user()->isFollowing($post->user->id))
+      <div class="card">
          <div class="card-haeder p-3 w-100 d-flex">
            <div class="ml-2 d-flex ">
+             <img src="{{ asset('storage/app/public/images.png') }}" class="rounded-circle" width="50" height="50">
       <p>{{$post->user->username}}</p>
       <p>{{$post->post}}</p>
       <p>{{$post->created_at}}</p>
+      @if (Auth::id() === $post->user_id)
       <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><input type ="image" name="submit" width="50" height="50" src="images/edit.png"></a>
       <a href="/post/{{$post->id}}/delete"><input type ="image" name="submit" width="60" height="60" src="images/trash-h.png"></a>
+      @endif
     </div>
   </div>
 </div>
+@endif
 @endforeach
     </div>
 

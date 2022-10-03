@@ -23,17 +23,6 @@ class UsersController extends Controller
             'all_users'  => $all_users
         ]);
     }
-    public function profile(){
-        return view('users.profile');
-    }
-
-    // public function searchForm(){
-    //     $users = User::get();
-    //         return view('users.search',[
-    //         'users' => $users
-    //         ]);
-
-    // }
     public function search(Request $requset){
         $keyword = $requset->input('search');
         $requset=session()->put('search',$keyword);
@@ -56,16 +45,44 @@ class UsersController extends Controller
         $users = Auth::user();
         return view('users.profile', ['users' => $users]);
     }
-    public function profileUpdate(Request $request, User $users)
+
+    public function profileUpdate(Request $request)
     {
-        $request->validate([
+        $user = Auth::user();
+        $up_name = $request->input('name');
+        $up_mail = $request->input('email');
+        $up_password = $request->input('password');
+        $up_password_comfirm =$request->input('password_comfirm');
+        $up_bio = $request->input('bio');
+        $path = $request->file('images');
+
+        if(!empty($path)){
+        $path->store('public/images');
+        $user->images = basename($path);
+        $user->save();
+        }
+
+        \DB::table('users')
+            ->where('id', Auth::id())
+            ->update(
+                ['username' =>$up_name ],
+                ['email' =>$up_mail],
+                ['password' => $up_password],
+                ['password_comfirm'=>$up_password_comfirm],
+                ['bio' => $up_bio]
+            );
+            return redirect('/profile');
+
+            $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:12'],
             'email' => ['required', 'string', 'email', 'min:5', 'max:40', 'unique:users,mail'],
             'password' =>['required', 'string', 'min:8', 'max:20', 'confirmed'],
             'password_comfirm' =>['required', 'string', 'min:8', 'max:20'],
             'bio' =>['nullable', 'string', 'max:150'],
-            'icon_imagi' =>['nullable', 'alpha_num', 'mimes:jpeg,png,jpg,zip,pdf'],
+            'images' =>['nullable', 'alpha_num', 'mimes:jpeg','png,jpg,zip,pdf'],
         ]);
+
+
     }
         // フォロー
     public function follow(Request $request, $id)
@@ -86,5 +103,14 @@ class UsersController extends Controller
         ->delete();
         return redirect('search');
     }
+
+
+        public function users_profile(){
+        $users = Auth::user();
+        Follow::where('followed_id', $id)
+        ->where('following_id', $following_id);
+        return view('users.otheruser', ['users' => $users]);
+    }
+
 
 }

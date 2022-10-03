@@ -55,10 +55,6 @@
         </div>
     </div>
                     {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div>
     @if ($errors->any())
         <script src="{{ asset('js/modal.js') }}"></script>
     @endif

@@ -42,6 +42,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/top','PostsController@index');
+
 // Route::get('/top','PostsController@update');
 Route::post('posts/{id}/update', 'PostsController@update');
 
@@ -63,8 +64,11 @@ Route::get('/profile', 'UsersController@show')->name('profile');
 //プロフィール編集
 Route::post('/profile', 'UsersController@profileUpdate')->name('profile_edit');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','FollowsController@followList');
+Route::get('/follower-list','FollowsController@followerList');
+
+Route::get('/users_profile/{id}','UsersController@users_profile');
+
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
@@ -72,6 +76,5 @@ Route::get('posts/create-form', 'PostsController@createForm')->name('posts.creat
 Route::post('posts/create', 'PostsController@store');
 
 Route::get('post/{id}/delete', 'PostsController@delete')->name('posts.index');
-
 
 });
