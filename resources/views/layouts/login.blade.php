@@ -26,7 +26,7 @@
     <header>
         <div id = "head">
         <h1><a href="/top">
-            <input type ="image" name="submit" width="100" height="40" src="images/atlas.png"></a></h1>
+            <input type ="image" name="submit" width="100" height="40" src="{{ asset('images/atlas.png') }}"></a></h1>
             <div id="">
                 <div id="">
 

@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 use App\User;
 use App\index;
 use App\Follow;
+use App\Post;
 use Auth;
 
 
@@ -105,11 +106,10 @@ class UsersController extends Controller
     }
 
 
-        public function users_profile(){
-        $users = Auth::user();
-        Follow::where('followed_id', $id)
-        ->where('following_id', $following_id);
-        return view('users.otheruser', ['users' => $users]);
+        public function users_profile($id){
+        $user = User::find($id);
+        $post = Post::where('user_id',$id)->get();
+        return view('users.otheruser', ['user' => $user,'post' => $post]);
     }
 
 
