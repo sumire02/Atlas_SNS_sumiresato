@@ -23,7 +23,7 @@ class PostsController extends Controller
         //
     }
 
-    // 作成した投稿を保存
+    // 作成した投稿を保存する
     public function store(Request $request)
     {
         //
