@@ -56,32 +56,31 @@ class UsersController extends Controller
         $up_password_comfirm =$request->input('password_comfirm');
         $up_bio = $request->input('bio');
         $path = $request->file('images');
+        $request->validate([
+            'name' => 'required', 'string', 'min:2', 'max:12',
+            'email' => 'required', 'string', 'email', 'min:5', 'max:40', 'unique:users,mail',
+            'password' =>'required', 'string', 'min:8', 'max:20', 'confirmed',
+            'password_comfirm' =>'required', 'string', 'min:8', 'max:20',
+            'bio' =>'nullable', 'string', 'max:150',
+            'images' =>'nullable', 'alpha_num', 'mimes:jpeg','png,jpg,zip,pdf',
+        ]);
+
 
         if(!empty($path)){
-        $path->store('public/images');
-        $user->images = basename($path);
-        $user->save();
+        $image = $path->store('public/images');
+        $user->images = basename($image);
+        $user->update();
         }
 
         \DB::table('users')
             ->where('id', Auth::id())
-            ->update(
-                ['username' =>$up_name ],
-                ['email' =>$up_mail],
-                ['password' => $up_password],
-                ['password_comfirm'=>$up_password_comfirm],
-                ['bio' => $up_bio]
-            );
+            ->update([
+                'username' =>$up_name,
+                'mail' =>$up_mail,
+                'password' =>bcrypt($up_password),
+                'bio' => $up_bio
+            ]);
             return redirect('/profile');
-
-            $request->validate([
-            'name' => ['required', 'string', 'min:2', 'max:12'],
-            'email' => ['required', 'string', 'email', 'min:5', 'max:40', 'unique:users,mail'],
-            'password' =>['required', 'string', 'min:8', 'max:20', 'confirmed'],
-            'password_comfirm' =>['required', 'string', 'min:8', 'max:20'],
-            'bio' =>['nullable', 'string', 'max:150'],
-            'images' =>['nullable', 'alpha_num', 'mimes:jpeg','png,jpg,zip,pdf'],
-        ]);
 
 
     }

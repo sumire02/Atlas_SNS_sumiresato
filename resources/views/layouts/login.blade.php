@@ -33,7 +33,9 @@
                     <div class="accordion">
                         <div class="head">
                             <h5 class="accordion-title js-accordion-title">
-                        <p>{{ Auth::user()->username }}さん<input type ="image"name="submit" width="50" height="50" src="images/icon1.png">
+                        <p>{{ Auth::user()->username }}さん
+                            <img name="submit" width="50" height="50" src="{{ asset('storage/images/'. Auth::user()->images) }}">
+
                         <i class='fa fa-chevron-circle-down arrow'></i></p>
                     </h5>
                         <a type="button" class="button"></a>

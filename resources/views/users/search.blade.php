@@ -6,9 +6,11 @@
   {{Form::token()}}
 <div class="form-group">
   <div class="card-haeder p-3 w-100 d-flex">
+    <div class="ml-2 d-flex ">
 
 {!! Form::input('text', 'search', null, ['class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
 <input type="submit" value="" class="btn btn-primary" >
+</div>
 </div>
   {{Form::close()}}
 <p>検索ワード：{{session('search')}}</p>
@@ -19,7 +21,7 @@
       @if (Auth::id() != $user->id)
       <div class="card">
         <div class="card-haeder p-3 w-100 d-flex">
-          <img src="{{ $user->images }}" class="rounded-circle" width="50" height="50">
+          <img src="{{ asset('storage/images/'. $user->images) }}" class="rounded-circle" width="50" height="50">
           <div class="ml-2 d-flex ">
             <p>{{$user->username}}</p>
             <div class="users-follow-btn">

@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="card-haeder p-5 w-100 d-flex">
-  <br><img src="{{ asset('images/icon.png/') }}" class="rounded-circle" width="50" height="50">
-  name {{$user->username}}</br>
+<img src="{{ asset('storage/images/'. $user->images) }}" class="rounded-circle" width="50" height="50">
+<br>name {{$user->username}}</br>
     <br>bio {{$user->bio}}</br>
           <div class="ml-2 d-flex ">
             <div class="users-follow-btn">
@@ -25,7 +25,7 @@
       <div class="card">
          <div class="card-haeder p-3 w-100 d-flex">
            <div class="ml-2 d-flex ">
-             <img src="{{ asset('storage/app/public/images.png') }}" class="rounded-circle" width="50" height="50">
+             <img src="{{ asset('storage/images/'. $user->images) }}" class="rounded-circle" width="50" height="50">
       <p>{{$post->user->username}}</p>
       <p>{{$post->post}}</p>
       <p>{{$post->created_at}}</p>

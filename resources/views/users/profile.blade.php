@@ -6,7 +6,7 @@
             <div class="pt-2">
                 <p class="h3 border-bottom border-secondary pb-3"></p>
             </div>
-            {!! Form::open(['route' => ['profile_edit'], 'method' => 'POST']) !!}
+            {!! Form::open(['route' => ['profile_edit'], 'method', 'files'=> true]) !!}
             {!! Form::hidden('id',$users->id) !!}
             <div class="m-3">
               <!-- name -->
@@ -18,7 +18,6 @@
                 <!-- mail -->
                 <div class="form-group pt-2">
                     {{Form::label('email','mail adress')}}
-
                     {{Form::email('email', $users->mail, ['class' => 'form-control', 'id' =>'email'])}}
                     <span class="text-danger">{{$errors->first('email')}}</span>
                 </div>
@@ -42,11 +41,12 @@
                 </div>
                 <!-- icon -->
                 <div class="form-group pt-6">
-                    {{Form::label('icon_imagi','icon imagi')}}
-                    {{Form::text('icon_imagi', $users->icon_imagi, ['class' => 'form-control', 'id' =>'icon_imagi'])}}
-                    <span class="text-danger">{{$errors->first('icon_imagi')}}</span>
+                    {{Form::label('images','icon imagi')}}
+                    <div>
+                    <input type="file" name="images">
+                    <span class="text-danger">{{$errors->first('images')}}</span>
+                  </div>
                 </div>
-
                 <div class="form-group pull-right">
                     {{Form::submit(' 更新 ', ['class'=>'btn btn-danger rounded-pill'])}}
                 </div>

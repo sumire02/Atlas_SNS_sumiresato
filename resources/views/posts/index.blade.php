@@ -1,9 +1,8 @@
 @extends('layouts.login')
 
 @section('content')
-
     <div class="container">
-      <input type ="image" name="submit" width="50" height="50" src="images/icon1.png">
+      <img name="submit" width="50" height="50" src="{{ asset('storage/images/'. Auth::user()->images) }}">
         {!! Form::open(['url' => 'posts/create']) !!}
         {{Form::token()}}
         <div class="form-group">
@@ -12,6 +11,7 @@
           </div>
         {!! Form::close() !!}
     </div>
+
     <div>
       <!-- 左が複数形(テーブル名)　右が単数(好きな文字で良い) -->
       @foreach ($posts as $post)
@@ -19,7 +19,7 @@
       <div class="card">
          <div class="card-haeder p-3 w-100 d-flex">
            <div class="ml-2 d-flex ">
-             <img src="{{ asset('storage/app/public/images.png') }}" class="rounded-circle" width="50" height="50">
+      <img width="50" height="50" src="{{ asset('storage/images/'. $post->user->images) }}">
       <p>{{$post->user->username}}</p>
       <p>{{$post->post}}</p>
       <p>{{$post->created_at}}</p>
