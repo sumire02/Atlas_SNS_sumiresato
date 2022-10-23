@@ -24,13 +24,13 @@
                 <!-- password -->
                 <div class="form-group pt-3">
                     {{Form::label('password','password')}}
-                    {{Form::text('password', '', ['class' => 'form-control', 'id' =>'password'],)}}
+                    {{Form::password('password',['class' => 'form-control', 'id' =>'password'],)}}
                     <span class="text-danger">{{$errors->first('password')}}</span>
                 </div>
                 <!-- password comfirm -->
                 <div class="form-group pt-4">
                     {{Form::label('password_comfirm','password comfirm')}}
-                    {{Form::text('password_comfirm', $users->password_comfirm, ['class' => 'form-control', 'id' =>'password_comfirm'])}}
+                    {{Form::password('password_comfirm',['class' => 'form-control', 'id' =>'password_comfirm'])}}
                     <span class="text-danger">{{$errors->first('password_comfirm')}}</span>
                 </div>
                 <!-- bio -->

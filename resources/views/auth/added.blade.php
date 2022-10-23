@@ -8,7 +8,9 @@
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>
 
-  <p class="btn"><button class="btn-danger"><a href="/login">ログイン画面へ</a></button></p>
+  <!-- ボタンの時 -->
+  <p><button type="button" class="btn btn-danger"><a href="/login">ログイン画面へ</a></button></p>
+
 </div>
 
 @endsection

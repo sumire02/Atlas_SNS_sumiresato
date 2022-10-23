@@ -9,6 +9,12 @@ body {
     background: #186AC9;
 }
 
+h1 {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
 section {
     background-color: #ccd8ff;
     padding: 50px 0;
@@ -19,4 +25,38 @@ div {
     height: 100px;
     background-color: #4773ff;
     margin: 0 auto;
+}
+
+/* .box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    border: solid 3px #6091d3;
+    border-radius: 10px;
+} */
+
+p {
+    height: 100px;
+    margin: 0 auto;
+    color: aliceblue;
+    font-size: large;
+    width: 172%;
+}
+
+header {
+    text-align: center;
+}
+
+header p {
+    font-size: 170%;
+    width: 100%;
+}
+
+label {
+    color: aliceblue;
+}
+
+/* 画像 */
+img {
+    width: 10%;
 }

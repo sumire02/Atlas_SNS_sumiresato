@@ -9,18 +9,18 @@
     <div class="ml-2 d-flex ">
 
 {!! Form::input('text', 'search', null, ['class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
-<input type="submit" value="" class="btn btn-primary" >
+<input type ="image" name="submit" class="btn btn-primary" width="50" height="40" src="images/虫眼鏡.png">
 </div>
+<h5>検索ワード：{{session('search')}}</h5>
+
 </div>
   {{Form::close()}}
-<p>検索ワード：{{session('search')}}</p>
-
 
       @foreach ($users as $user)
       <!-- ログインユーザー以外の表示 -->
       @if (Auth::id() != $user->id)
-      <div class="card">
-        <div class="card-haeder p-3 w-100 d-flex">
+      <div class="inner">
+        <div class="card-haeder p-3 d-flex">
           <img src="{{ asset('storage/images/'. $user->images) }}" class="rounded-circle" width="50" height="50">
           <div class="ml-2 d-flex ">
             <p>{{$user->username}}</p>
@@ -36,15 +36,13 @@
             </form>
             @endif
             </div>
-
           </div>
         </div>
       </div>
-      @endif
-      @endforeach
-
+        @endif
+        @endforeach
+      </div>
     </div>
-</div>
 
 
 @endsection

@@ -158,3 +158,76 @@ ul li {
     transform: translate(-50%, -50%);
     width: 60%;
 }
+
+/* li {
+    list-style: none;
+    border-bottom: 1px solid #000;
+    display: flex;
+}
+
+.post-content {
+    width: 100%;
+    padding: 15px;
+}
+
+.post-content>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-name {
+    margin-bottom: 10px;
+} */
+
+.card img {
+    margin: 10pt;
+
+}
+
+.card p {
+    margin: 10pt;
+}
+
+.card input {
+    margin: 10pt;
+}
+
+div {
+    display: block;
+    margin-left: auto;
+}
+
+.inner {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.head {
+    height: 12pt;
+}
+
+.inner img {
+    margin: 10pt;
+
+}
+
+.inner p {
+    margin: 10pt;
+}
+
+.inner button {
+    display: block;
+    margin-left: 100pt;
+}
+
+.box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    background: #FFF;
+    border: solid 3px #6091d3;
+    /*線*/
+    border-radius: 10px;
+    /*角の丸み*/
+}

@@ -56,6 +56,7 @@ class UsersController extends Controller
         $up_password_comfirm =$request->input('password_comfirm');
         $up_bio = $request->input('bio');
         $path = $request->file('images');
+
         $request->validate([
             'name' => 'required', 'string', 'min:2', 'max:12',
             'email' => 'required', 'string', 'email', 'min:5', 'max:40', 'unique:users,mail',

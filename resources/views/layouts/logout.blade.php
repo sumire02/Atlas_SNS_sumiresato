@@ -6,7 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="ページの内容を表す文章" />
   <title></title>
+  <!-- リセット綺麗にする -->
   <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
+<!-- 外部から読み込むcss -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- 自作のcss読み込み -->
   <link rel="stylesheet" href="{{ asset('css/logout.css') }} ">
   <!--スマホ,タブレット対応-->
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -21,7 +25,7 @@
 </head>
 <body>
   <header>
-    <h1><img src="images/atlas.png"></h1>
+    <img src="images/atlas.png">
     <p>Social Network Service</p>
   </header>
   <div id="container">

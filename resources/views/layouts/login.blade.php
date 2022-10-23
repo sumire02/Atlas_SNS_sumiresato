@@ -34,7 +34,7 @@
                         <div class="head">
                             <h5 class="accordion-title js-accordion-title">
                         <p>{{ Auth::user()->username }}さん
-                            <img name="submit" width="50" height="50" src="{{ asset('storage/images/'. Auth::user()->images) }}">
+                            <img src="{{ asset('storage/images/'. Auth::user()->images) }}" class="rounded-circle" width="50" height="50">
 
                         <i class='fa fa-chevron-circle-down arrow'></i></p>
                     </h5>

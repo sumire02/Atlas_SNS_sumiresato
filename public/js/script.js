@@ -1,7 +1,7 @@
 
 $(function () {
   $('.button').on('click', function () {
-    $(this).parents('.accordion').find('.content').slideToggle(200);
+    $('.content').slideToggle(200);
     $(this).toggleClass('open');
   });
 });
