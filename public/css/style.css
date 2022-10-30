@@ -75,22 +75,22 @@ p {
     padding: 8px 16px;
 }
 
-.button {
+/* .button {
     border: 1px solid #186AC9;
     border-radius: 5px;
     display: block;
     position: relative;
-}
+} */
 
 .button::after {
     content: "";
     position: absolute;
     right: 25px;
-    top: 38%;
+    top: -80%;
     transition: all 0.2s ease-in-out;
     display: block;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-top: solid 2px #fff;
     border-right: solid 2px #fff;
     -webkit-transform: rotate(135deg);
@@ -101,12 +101,14 @@ p {
 .button.open::after {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    top: 45%;
+    top: -80%;
 }
 
 .content {
     display: none;
-    padding-left: 2.3125em;
+    position: fixed;
+    width: 20%;
+
 }
 
 .list+.list {
@@ -132,6 +134,10 @@ ul li {
 .content {
     margin: 0 auto;
     padding: 40px;
+    border-left: solid 2px #001F5B;
+    border-right: solid 2px #001F5B;
+    border-top: solid 2px #001F5B;
+    border-bottom: solid 2px #001F5B;
 }
 
 .modal {
@@ -230,4 +236,54 @@ div {
     /*線*/
     border-radius: 10px;
     /*角の丸み*/
+}
+
+/* 画面左から右に揃える */
+/* topで高さ調整 */
+.text-right {
+    position: absolute;
+    top: -10px;
+    right: 0;
+}
+
+.edit-right {
+    position: absolute;
+    top: 70px;
+    right: 65px;
+}
+
+.trash-right {
+    position: absolute;
+    top: 70px;
+    right: 0;
+}
+
+.post-right {
+    position: absolute;
+    top: 70px;
+    right: 65px;
+}
+
+.users-follow-btn {
+    position: absolute;
+    margin: 0 auto;
+    right: 500px;
+}
+
+ul {
+    background-color: #186AC9;
+}
+
+li a {
+    height: 50px;
+    color: #fff;
+}
+
+.btn-f {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-u {
+    text-align: center;
 }

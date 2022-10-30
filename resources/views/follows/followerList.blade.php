@@ -22,9 +22,11 @@
                <img src="{{ asset('storage/images/'. $post->user->images) }}" class="rounded-circle" width="50" height="50"></a>
                <!-- <div class="post-content">
                    <div class="post-name"> -->
+                     <div>
                      <p>{{$post->user->username}}</p>
                      <p>{{$post->post}}</p>
-                     <p>{{$post->created_at}}</p>
+                     <p class="text-right">{{$post->created_at}}</p>
+                    </div>
                     <!-- </div>
                   </div>
                 </li>

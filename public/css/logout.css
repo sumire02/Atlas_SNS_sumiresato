@@ -4,10 +4,13 @@ html {
     height: 100%;
 }
 
+/* @extends('layouts.logout')layoutsの中のlogout.blade.phpのbodyに反応している */
 body {
-    height: 100%;
-    background: #186AC9;
+    height: 100vh;
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #f7ff00 0%, #3a7bd5 60%);
 }
+
 
 h1 {
     width: 100px;
@@ -20,19 +23,13 @@ section {
     padding: 50px 0;
 }
 
-div {
+/* div {
+    position: absolute;
+    right: 675px;
     width: 100px;
     height: 100px;
     background-color: #4773ff;
     margin: 0 auto;
-}
-
-/* .box {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    font-weight: bold;
-    border: solid 3px #6091d3;
-    border-radius: 10px;
 } */
 
 p {
@@ -40,7 +37,7 @@ p {
     margin: 0 auto;
     color: aliceblue;
     font-size: large;
-    width: 172%;
+    text-align: center;
 }
 
 header {
@@ -54,9 +51,27 @@ header p {
 
 label {
     color: aliceblue;
+    width: 117px;
 }
 
 /* 画像 */
-img {
+header img {
     width: 10%;
+}
+
+.form-control {
+    width: 250px;
+}
+
+.login {
+    position: absolute;
+    right: 37%;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(51, 112, 121, 0.4);
+}
+
+a {
+    color: #fff;
 }

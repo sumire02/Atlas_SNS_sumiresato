@@ -1,8 +1,11 @@
 
+// '.accordion-title'を押す('click')ことにより
+// '.content'が表示される
 $(function () {
-  $('.button').on('click', function () {
+  $('.accordion-title').on('click', function () {
     $('.content').slideToggle(200);
-    $(this).toggleClass('open');
+    // .buttonでCSSで指定した上で、矢印を上向になるように
+    $('.button').toggleClass('open');
   });
 });
 

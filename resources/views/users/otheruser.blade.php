@@ -21,18 +21,18 @@
 </div>
 </div>
 @foreach ($post as $post)
-<div class="col-md-8 mb-3">
       <div class="card">
          <div class="card-haeder p-3 w-100 d-flex">
            <div class="ml-2 d-flex ">
              <img src="{{ asset('storage/images/'. $user->images) }}" class="rounded-circle" width="50" height="50">
              <p>{{$post->user->username}}</p>
              <p>{{$post->post}}</p>
-             <p>{{$post->created_at}}</p>
+             <div>
+             <p class="text-right">{{$post->created_at}}</p>
+            </div>
             </div>
           </div>
         </div>
-      </div>
 @endforeach
 
 

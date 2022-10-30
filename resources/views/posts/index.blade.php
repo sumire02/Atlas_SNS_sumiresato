@@ -1,14 +1,14 @@
 @extends('layouts.login')
 
 @section('content')
-    <div class="container">
+  <div class="card">
+    <div class="card-haeder p-5 w-100 d-flex">
       <img src="{{ asset('storage/images/'. Auth::user()->images) }}" class="rounded-circle" width="50" height="50">
         {!! Form::open(['url' => 'posts/create']) !!}
         {{Form::token()}}
-        <div class="form-group">
             {!! Form::input('text', 'post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容内容を入力してください。']) !!}
-            <input type ="image" name="submit" width="100" height="100" src="images/post.png">
-          </div>
+            <input class = "post-right" type ="image" name="submit" width="100" height="100" src="images/post.png">
+</div>
         {!! Form::close() !!}
     </div>
     <div>
@@ -19,13 +19,15 @@
          <div class="card-haeder p-3 w-100 d-flex">
            <div class="ml-2 d-flex ">
       <img src="{{ asset('storage/images/'. $post->user->images) }}" class="rounded-circle" width="50" height="50">
+      <div>
       <p>{{$post->user->username}}</p>
       <p><br>{{$post->post}}</p>
-      <p>{{$post->created_at}}</p>
+      <p class="text-right">{{$post->created_at}}</p>
+    </div>
       @if (Auth::id() === $post->user_id)
-      <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><input type ="image" name="submit" width="50" height="50" src="images/edit.png"></a>
+      <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><input class ="edit-right" type ="image" name="submit" width="50" height="50" src="images/edit.png"></a>
       <a href="/post/{{$post->id}}/delete">
-        <input type ="image" name="submit" width="60" height="60" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')" src="images/trash-h.png"></a>
+        <input class = "trash-right" type ="image" name="submit" width="60" height="60" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')" src="images/trash-h.png"></a>
       @endif
     </div>
   </div>
