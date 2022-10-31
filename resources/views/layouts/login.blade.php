@@ -7,8 +7,8 @@
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="{{ asset('/js/script.js') }} "></script>
     <!--スマホ,タブレット対応-->
@@ -24,9 +24,9 @@
 </head>
 <body>
     <header>
-        <div id = "head">
+        <div id = "head" style="height: 90px;">
         <h1><a href="/top">
-            <input type ="image" name="submit" width="100" height="40" src="{{ asset('images/atlas.png') }}"></a></h1>
+            <input class="atala-img" type ="image" name="submit" width="100" height="40" src="{{ asset('images/atlas.png') }}"></a></h1>
             <div id="">
                 <div id="">
 

@@ -64,7 +64,8 @@ class UsersController extends Controller
             'password_comfirm' =>'required', 'string', 'min:8', 'max:20',
             'bio' =>'nullable', 'string', 'max:150',
             'images' =>'nullable', 'alpha_num', 'mimes:jpeg','png,jpg,zip,pdf',
-        ]);
+         ]);
+
 
 
         if(!empty($path)){

@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-  <div class="card">
+  <div class="card post-area">
     <div class="card-haeder p-5 w-100 d-flex">
       <h3>Follow List</h3>
       @foreach ($users as $user)
@@ -12,7 +12,7 @@
     </div>
   </div>
       @foreach ($posts as $post)
-       <div class="card">
+       <div class="card tweet">
          <div class="card-haeder p-3 w-100 d-flex">
            <div class="ml-2 d-flex ">
              <a href="/users_profile/{{$post->user->id}}">

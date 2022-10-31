@@ -2,10 +2,9 @@
 
 @section('content')
     <div class="card w-50 mx-auto m-5">
+        <img src="{{ asset('storage/images/'. Auth::user()->images) }}" class="rounded-circle" width="50" height="50">
         <div class="card-body">
-            <div class="pt-2">
-                <p class="h3 border-bottom border-secondary pb-3"></p>
-            </div>
+
             {!! Form::open(['route' => ['profile_edit'], 'method', 'files'=> true]) !!}
             {!! Form::hidden('id',$users->id) !!}
             <div class="m-3">

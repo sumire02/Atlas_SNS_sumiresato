@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-  <div class="card">
+  <div class="card post-area">
     <div class="card-haeder p-5 w-100 d-flex">
       <img src="{{ asset('storage/images/'. Auth::user()->images) }}" class="rounded-circle" width="50" height="50">
         {!! Form::open(['url' => 'posts/create']) !!}
@@ -15,7 +15,7 @@
       <!-- 左が複数形(テーブル名)　右が単数(好きな文字で良い) -->
       @foreach ($posts as $post)
       @if (Auth::id() === $post->user_id || auth()->user()->isFollowing($post->user->id))
-      <div class="card">
+      <div class="card tweet">
          <div class="card-haeder p-3 w-100 d-flex">
            <div class="ml-2 d-flex ">
       <img src="{{ asset('storage/images/'. $post->user->images) }}" class="rounded-circle" width="50" height="50">

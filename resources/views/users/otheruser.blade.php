@@ -1,6 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
+<div class="post-area">
 <div class="card-haeder p-5 w-100 d-flex">
 <img src="{{ asset('storage/images/'. $user->images) }}" class="rounded-circle" width="50" height="50">
 <br>name {{$user->username}}</br>
@@ -20,8 +21,9 @@
   </div>
 </div>
 </div>
+</div>
 @foreach ($post as $post)
-      <div class="card">
+      <div class="card tweet">
          <div class="card-haeder p-3 w-100 d-flex">
            <div class="ml-2 d-flex ">
              <img src="{{ asset('storage/images/'. $user->images) }}" class="rounded-circle" width="50" height="50">

@@ -59,16 +59,16 @@ p {
 .accordion {
     position: relative;
     width: 20%;
-    border: 1px solid #0079c1;
     border-top: none;
     outline: 0;
     cursor: pointer;
 }
 
 .head {
+    position: absolute;
+    top: -92px;
     background: #186AC9;
     color: #fff;
-    border-bottom: 1px solid #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -85,8 +85,8 @@ p {
 .button::after {
     content: "";
     position: absolute;
+    margin: -32px;
     right: 25px;
-    top: -80%;
     transition: all 0.2s ease-in-out;
     display: block;
     width: 10px;
@@ -101,7 +101,7 @@ p {
 .button.open::after {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    top: -80%;
+    margin: -32px;
 }
 
 .content {
@@ -111,7 +111,7 @@ p {
 
 }
 
-.list+.list {
+.list.list {
     border-top: 1px solid #666;
 }
 
@@ -209,10 +209,6 @@ div {
     max-width: 500px;
 }
 
-.head {
-    height: 12pt;
-}
-
 .inner img {
     margin: 10pt;
 
@@ -286,4 +282,30 @@ li a {
 
 .btn-u {
     text-align: center;
+    border-top: #666 1px solid;
+    margin: 20px auto;
+}
+
+/* h4 {
+    position: absolute;
+    margin: 0 auto;
+    left: 500px;
+    top: 95px;
+} */
+
+.card {
+    border: none;
+}
+
+.post-area {
+    border-bottom: #ccc 5px solid;
+
+}
+
+.tweet {
+    border-bottom: #666 1px solid;
+}
+
+.atala-img {
+    margin: 20px;
 }
