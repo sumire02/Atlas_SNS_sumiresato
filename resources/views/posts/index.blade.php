@@ -6,7 +6,7 @@
       <img src="{{ asset('storage/images/'. Auth::user()->images) }}" class="rounded-circle" width="50" height="50">
         {!! Form::open(['url' => 'posts/create']) !!}
         {{Form::token()}}
-            {!! Form::input('text', 'post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容内容を入力してください。']) !!}
+            {!! Form::input('text', 'post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください。']) !!}
             <input class = "post-right" type ="image" name="submit" width="100" height="100" src="images/post.png">
 </div>
         {!! Form::close() !!}
